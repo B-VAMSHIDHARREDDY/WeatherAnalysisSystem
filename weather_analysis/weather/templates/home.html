@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Weather Analysis</h1>
+        </header>
+
+        <div class="input-container">
+            <input type="text" id="city-input" placeholder="Enter city name" aria-label="Enter city name">
+            <button id="fetch-weather" aria-label="Check Weather">Check Weather</button>
+        </div>
+
+        <div class="weather-layout">
+            <div class="weather-details">
+                <section class="current-weather">
+                    <p><strong>City:</strong> <span id="city-name">-</span></p>
+                    <p><strong>Region:</strong> <span id="region">-</span></p>
+                    <p><strong>Country:</strong> <span id="country">-</span></p>
+                    <p><strong>Local Time:</strong> <span id="localtime">-</span></p>
+                    <div class="temperature-box">
+                        <p><strong>Temperature:</strong> <span id="temp_c">-</span>°C / <span id="temp_f">-</span>°F</p>
+                        <p><strong>Feels like:</strong> <span id="feelslike_c">-</span>°C</p>
+                    </div>
+                    <p><strong>Condition:</strong> <span id="condition_text">-</span></p>
+                    <p><strong>Humidity:</strong> <span id="humidity">-</span>%</p>
+                    <p><strong>Wind Speed:</strong> <span id="wind_mph">-</span> mph / <span id="wind_kph">-</span> kph</p>
+                    <p><strong>Pressure:</strong> <span id="pressure_mb">-</span> mb</p>
+                    <p><strong>UV Index:</strong> <span id="uv">-</span></p>
+                </section>
+            </div>
+
+            <div class="weather-trends">
+                <section class="trends">
+                    <h3>24-Hour Trends</h3>
+                    <hr>
+                    <p><strong>Avg Temp:</strong> <span id="avg_temp">-</span>°C</p>
+                    <p><strong>Avg Humidity:</strong> <span id="avg_humidity">-</span>%</p>
+                </section>
+
+                <section class="alerts">
+                    <h3>Alerts</h3>
+                    <hr>
+                    <ul id="alerts-list" class="alerts-list">
+                        <!-- Alerts will be dynamically inserted here -->
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
