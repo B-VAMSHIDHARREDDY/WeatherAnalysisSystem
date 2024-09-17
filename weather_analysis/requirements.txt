@@ -1,0 +1,7 @@
+Django
+mysqlclient
+python-dotenv
+djangorestframework
+django-cors-headers
+requests
+psycopg2-binary
