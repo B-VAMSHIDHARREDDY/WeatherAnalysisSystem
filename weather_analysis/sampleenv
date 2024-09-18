@@ -1,12 +1,10 @@
 # Database credentials
-DB_NAME=weather_analysis_db
-DB_USER=ser
-DB_PASSWORD=password
-DB_HOST=localhost
-DB_PORT=3306
+DB_URL='postgresqlurl'
 
 # API Key for WeatherAPI
 WEATHER_API_KEY=api_key
 
 # Django secret key
 SECRET_KEY=django_secret_key
+
+ENV_TYPE="dev" or "prod"
