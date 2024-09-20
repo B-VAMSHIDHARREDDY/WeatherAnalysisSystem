@@ -77,14 +77,26 @@ WSGI_APPLICATION = 'weather_analysis.wsgi.application'
 
 # Database settings
 
-# Replace the SQLite DATABASES configuration with PostgreSQL:
-DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default= os.getenv('DB_URL'),
-        conn_max_age=600
-    )
-}
+if ENV_TYPE == 'dev':
+    # MySQL configuration for dev environment
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv('DB_NAME', 'weather_analysis'),
+            'USER': os.getenv('DB_USER', 'root'),
+            'PASSWORD': os.getenv('DB_PASSWORD', 'root'),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT', '3306'),
+        }
+    }
+else:
+    # PostgreSQL configuration for prod environment
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv('DB_URL'),
+            conn_max_age=600
+        )
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -115,7 +127,6 @@ STATICFILES_DIRS = [
     BASE_DIR / "static", 
 ]
 
-
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -124,6 +135,6 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 else:
     STATIC_ROOT = BASE_DIR / "staticfiles"
-    
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
