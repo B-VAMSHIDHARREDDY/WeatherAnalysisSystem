@@ -50,7 +50,7 @@ class WeatherService:
 
     def calculate_weather_trends(self):
         past_24_hours = timezone.now() - timedelta(hours=24)
-        weather_data = WeatherData.objects.filter(city=self.city, localtime__gte=past_24_hours)
+        weather_data = WeatherData.objects.filter(city=self.weather_data.city, localtime__gte=past_24_hours)
 
         if not weather_data.exists():
             return None, None
