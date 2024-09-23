@@ -10,6 +10,7 @@ class WeatherTrendsAndAlerts(APIView):
             return Response({"error": "City is required"}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
+            print("helo")
             # Create an instance of WeatherService
             weather_service = WeatherService(city)
 
