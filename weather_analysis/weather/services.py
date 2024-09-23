@@ -5,6 +5,8 @@ from datetime import timedelta
 from .models import WeatherData
 from django.db import models
 
+l = [1,2,3,4,6]
+s = set(l)
 class WeatherService:
     def __init__(self, city):
         self.city = city
